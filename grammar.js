@@ -30,37 +30,53 @@ module.exports = grammar({
     documentation: $ => repeat(
       choice(
         $.header,
+        $.topic,
         $.paragraph
       )
     ),
 
+    topic: $ => prec(10, seq(
+      $.header,
+      repeat1($.paragraph)
+    )),
 
-    header: $ => seq(
-      field("name", $.header_type),
+    header: $ => prec.right(seq(
+      alias(/\w+/, $.label),
+      optional($.decorations),
       token.immediate(":"),
-      field("content", $.header_content),
 
-      choice(/\n/, ".", ";")
-    ),
-
-    header_type: $ => seq(
-      /\w+/,
-      optional(alias($.header_mention, $.mention)),
-    ),
-    header_mention: _ => seq("(", /[^)]+/, ")"),
-    header_content: $ => repeat1($._inline),
-
-
-    paragraph: $ => seq(
       repeat1($._inline),
-      /\n\n?/,
+      optional("\n"),
+    )),
+
+    decorations: $ => seq(
+      "(",
+      $._decoration,
+      optional(
+        repeat1(
+          seq(
+            ",",
+            $._decoration,
+          )
+        )
+      ),
+      ")",
+    ),
+    _decoration: $ => choice(
+      $.mention,
+      $.word,
     ),
 
+    paragraph: $ => prec.right(seq(
+      repeat1($._inline),
+      optional(/\n+/)
+    )),
 
     _inline: $ => choice(
       $.code,
-      $.italic,
       $.bold,
+      $.italic,
+
       $.issue_reference,
       $.url,
 
@@ -94,9 +110,13 @@ module.exports = grammar({
     italic: _ => inlineSyntax("*"),
     bold: _ => inlineSyntax("**", "*"),
 
-    word: _ => token(/\w+/),
-    number: _ => token(/[\d.]+/),
-    punctuation: _ => token(/["'`\(\)\[\]\{\}\|!#$%&\*\+\-.,/:;<=>?@\^_~]/),
+    word: _ => /\w+/,
+    number: _ => choice(
+      /\.\d+/,
+      /\d+/,
+      /\d+\.\d+/
+    ),
+    punctuation: _ => /\p{P}+/u,
 
     mention: _ => token(seq(
       "@",
@@ -104,3 +124,4 @@ module.exports = grammar({
     )),
   }
 });
+
