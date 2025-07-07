@@ -37,7 +37,9 @@ module.exports = grammar({
 
     topic: $ => prec(10, seq(
       $.header,
-      repeat1($.paragraph)
+      repeat1(
+        alias($.paragraph, $.description)
+      )
     )),
 
     header: $ => prec.right(seq(
@@ -45,7 +47,7 @@ module.exports = grammar({
       optional($.decorations),
       token.immediate(":"),
 
-      repeat1($._inline),
+      alias(repeat1($._inline), $.subject),
       optional("\n"),
     )),
 
@@ -64,7 +66,7 @@ module.exports = grammar({
     ),
     _decoration: $ => choice(
       $.mention,
-      $.word,
+      alias($.word, $.topic),
     ),
 
     paragraph: $ => prec.right(seq(
