@@ -5,7 +5,7 @@ todo: Do stuff
 ------------------------------------------------------------------------------
 
 (documentation
-  (header
+  (task
     (label)
     (subject
       (word)
@@ -18,7 +18,7 @@ todo(topic_1, topic_2): Do stuff
 ------------------------------------------------------------------------------
 
 (documentation
-  (header
+  (task
     (label)
     (decorations
       (topic)
@@ -34,7 +34,7 @@ todo(topic_1, @dev_1): Do stuff
 ------------------------------------------------------------------------------
 
 (documentation
-  (header
+  (task
     (label)
     (decorations
       (topic)
@@ -44,38 +44,35 @@ todo(topic_1, @dev_1): Do stuff
       (word))))
 
 ==============================================================================
-A topic
+Task with with some description
 ==============================================================================
 todo(topic_1, @dev_1): Do stuff
 
 We need to fix `X` before doing a stable release.
-
 We **might** use `Y`'s implementation as it does most of what we want.
 ------------------------------------------------------------------------------
 
 (documentation
-  (topic
-    (header
-      (label)
-      (decorations
-        (topic)
-        (mention))
-      (subject
-        (word)
-        (word)))
-    (description
+  (task
+    (label)
+    (decorations
+      (topic)
+      (mention))
+    (subject
       (word)
-      (word)
-      (word)
-      (word)
-      (code)
-      (word)
-      (word)
-      (word)
-      (word)
-      (word)
-      (punctuation)))
+      (word)))
   (paragraph
+    (word)
+    (word)
+    (word)
+    (word)
+    (code)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (punctuation)
     (word)
     (bold)
     (word)
@@ -92,4 +89,99 @@ We **might** use `Y`'s implementation as it does most of what we want.
     (word)
     (word)
     (punctuation)))
+
+==============================================================================
+Task with with multi-paragraph description
+==============================================================================
+fix: Fix compatability issues. 
+
+Compatability issues were found in `v0.1.0`.
+
+I have made a compatability fix in this PR that solves this.
+------------------------------------------------------------------------------
+
+(documentation
+  (task
+    (label)
+    (subject
+      (word)
+      (word)
+      (word)
+      (punctuation)))
+  (paragraph
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (code)
+    (punctuation))
+  (paragraph
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (punctuation)))
+
+==============================================================================
+Text styles
+==============================================================================
+`Inline \` code` *italic* **bold**
+------------------------------------------------------------------------------
+
+(documentation
+  (paragraph
+    (code)
+    (italic)
+    (bold)))
+
+==============================================================================
+Issue references
+==============================================================================
+See #56. Also OXY2DEV/tree-sitter-doctext#57
+------------------------------------------------------------------------------
+
+(documentation
+  (paragraph
+    (word)
+    (issue_reference)
+    (punctuation)
+    (word)
+    (issue_reference)))
+
+==============================================================================
+Mention
+==============================================================================
+This should be done by @OXY2DEV.
+------------------------------------------------------------------------------
+
+(documentation
+  (paragraph
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (mention)
+    (punctuation)))
+
+==============================================================================
+URLs
+==============================================================================
+Check out https://github.com/OXY2DEV/tree-sitter-doctext
+------------------------------------------------------------------------------
+
+(documentation
+  (paragraph                                                                            
+    (word)
+    (word)
+    (url)))
 

@@ -1,0 +1,6 @@
+feat(@OXY2DEV): Tree-sitter parser for Conventional Comment.
+
+This parsers goal is to provide syntax highlighting for comments & Git commit messages.
+It supports a subset of `markdown`.
+
+Author: @OXY2DEV
