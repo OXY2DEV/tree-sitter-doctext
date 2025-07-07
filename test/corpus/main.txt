@@ -1,0 +1,95 @@
+==============================================================================
+Task header
+==============================================================================
+todo: Do stuff
+------------------------------------------------------------------------------
+
+(documentation
+  (header
+    (label)
+    (subject
+      (word)
+      (word))))
+
+==============================================================================
+Task header with topics
+==============================================================================
+todo(topic_1, topic_2): Do stuff
+------------------------------------------------------------------------------
+
+(documentation
+  (header
+    (label)
+    (decorations
+      (topic)
+      (topic))
+    (subject
+      (word)
+      (word))))
+
+==============================================================================
+Task header with mentions & topics
+==============================================================================
+todo(topic_1, @dev_1): Do stuff
+------------------------------------------------------------------------------
+
+(documentation
+  (header
+    (label)
+    (decorations
+      (topic)
+      (mention))
+    (subject
+      (word)
+      (word))))
+
+==============================================================================
+A topic
+==============================================================================
+todo(topic_1, @dev_1): Do stuff
+
+We need to fix `X` before doing a stable release.
+
+We **might** use `Y`'s implementation as it does most of what we want.
+------------------------------------------------------------------------------
+
+(documentation
+  (topic
+    (header
+      (label)
+      (decorations
+        (topic)
+        (mention))
+      (subject
+        (word)
+        (word)))
+    (description
+      (word)
+      (word)
+      (word)
+      (word)
+      (code)
+      (word)
+      (word)
+      (word)
+      (word)
+      (word)
+      (punctuation)))
+  (paragraph
+    (word)
+    (bold)
+    (word)
+    (code)
+    (punctuation)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (word)
+    (punctuation)))
+
