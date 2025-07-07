@@ -9,11 +9,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "topic"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "header"
+            "name": "task"
           },
           {
             "type": "SYMBOL",
@@ -22,45 +18,7 @@
         ]
       }
     },
-    "topic": {
-      "type": "PREC",
-      "value": -1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "header"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_topic_paragraphs"
-          }
-        ]
-      }
-    },
-    "_topic_paragraphs": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "REPEAT1",
-            "content": {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "paragraph"
-              },
-              "named": true,
-              "value": "description"
-            }
-          }
-        ]
-      }
-    },
-    "header": {
+    "task": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
@@ -198,7 +156,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "\\n+"
+                "value": "\\n\\n+"
               },
               {
                 "type": "BLANK"

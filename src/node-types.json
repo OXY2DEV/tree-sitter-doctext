@@ -29,53 +29,6 @@
     }
   },
   {
-    "type": "description",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "bold",
-          "named": true
-        },
-        {
-          "type": "code",
-          "named": true
-        },
-        {
-          "type": "issue_reference",
-          "named": true
-        },
-        {
-          "type": "italic",
-          "named": true
-        },
-        {
-          "type": "mention",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "punctuation",
-          "named": true
-        },
-        {
-          "type": "url",
-          "named": true
-        },
-        {
-          "type": "word",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "documentation",
     "named": true,
     "root": true,
@@ -85,38 +38,11 @@
       "required": false,
       "types": [
         {
-          "type": "header",
-          "named": true
-        },
-        {
           "type": "paragraph",
           "named": true
         },
         {
-          "type": "topic",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "header",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "decorations",
-          "named": true
-        },
-        {
-          "type": "label",
-          "named": true
-        },
-        {
-          "type": "subject",
+          "type": "task",
           "named": true
         }
       ]
@@ -227,23 +153,32 @@
     }
   },
   {
-    "type": "topic",
+    "type": "task",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "description",
+          "type": "decorations",
           "named": true
         },
         {
-          "type": "header",
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "subject",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "topic",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "word",

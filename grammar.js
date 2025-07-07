@@ -63,7 +63,7 @@ module.exports = grammar({
 
     paragraph: $ => prec.right(seq(
       repeat1($._inline),
-      optional(/\n+/)
+      optional(/\n\n+/)
     )),
 
     _inline: $ => choice(
