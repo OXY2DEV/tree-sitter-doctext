@@ -9,11 +9,11 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "header"
+            "name": "topic"
           },
           {
             "type": "SYMBOL",
-            "name": "topic"
+            "name": "header"
           },
           {
             "type": "SYMBOL",
@@ -24,7 +24,7 @@
     },
     "topic": {
       "type": "PREC",
-      "value": 10,
+      "value": -1,
       "content": {
         "type": "SEQ",
         "members": [
@@ -32,6 +32,19 @@
             "type": "SYMBOL",
             "name": "header"
           },
+          {
+            "type": "SYMBOL",
+            "name": "_topic_paragraphs"
+          }
+        ]
+      }
+    },
+    "_topic_paragraphs": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
           {
             "type": "REPEAT1",
             "content": {

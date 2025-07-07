@@ -29,20 +29,12 @@ module.exports = grammar({
   rules: {
     documentation: $ => repeat(
       choice(
-        $.header,
-        $.topic,
+        $.task,
         $.paragraph
       )
     ),
 
-    topic: $ => prec(10, seq(
-      $.header,
-      repeat1(
-        alias($.paragraph, $.description)
-      )
-    )),
-
-    header: $ => prec.right(seq(
+    task: $ => prec.right(seq(
       alias(/\w+/, $.label),
       optional($.decorations),
       token.immediate(":"),
