@@ -30,7 +30,7 @@ module.exports = grammar({
     documentation: $ => repeat(
       choice(
         $.task,
-        $.paragraph
+        $.paragraph,
       )
     ),
 
@@ -40,7 +40,7 @@ module.exports = grammar({
       token.immediate(":"),
 
       alias(repeat1($._inline), $.subject),
-      optional("\n"),
+      optional(/\n+/),
     )),
 
     decorations: $ => seq(
@@ -60,7 +60,7 @@ module.exports = grammar({
 
     paragraph: $ => prec.right(seq(
       repeat1($._inline),
-      optional(/\n\n+/)
+      optional(/\n{2,}/)
     )),
 
     _inline: $ => choice(
