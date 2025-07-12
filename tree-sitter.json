@@ -8,7 +8,6 @@
       "scope": "source.doctext",
       "file-types": [
         "dtxt",
-        "txt"
       ],
       "injection-regex": "^doctext$",
       "class-name": "TreeSitterDoctext"
