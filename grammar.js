@@ -45,13 +45,10 @@ module.exports = grammar({
 
     decorations: $ => seq(
       "(",
-      $._decoration,
-      optional(
-        repeat1(
-          seq(
-            ",",
-            $._decoration,
-          )
+      repeat1(
+        seq(
+          $._decoration,
+          optional(","),
         )
       ),
       ")",
