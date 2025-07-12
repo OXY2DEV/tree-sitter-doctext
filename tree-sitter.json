@@ -7,7 +7,7 @@
       "title": "DocText",
       "scope": "source.doctext",
       "file-types": [
-        "dtxt",
+        "dtxt"
       ],
       "injection-regex": "^doctext$",
       "class-name": "TreeSitterDoctext"
