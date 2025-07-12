@@ -1,15 +1,5 @@
 [
   {
-    "type": "bold",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "code",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "decorations",
     "named": true,
     "fields": {},
@@ -49,16 +39,6 @@
     }
   },
   {
-    "type": "italic",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "number",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "paragraph",
     "named": true,
     "fields": {},
@@ -72,6 +52,10 @@
         },
         {
           "type": "code",
+          "named": true
+        },
+        {
+          "type": "double_quote",
           "named": true
         },
         {
@@ -95,6 +79,10 @@
           "named": true
         },
         {
+          "type": "single_quote",
+          "named": true
+        },
+        {
           "type": "url",
           "named": true
         },
@@ -104,6 +92,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "punctuation",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "subject",
@@ -122,6 +115,10 @@
           "named": true
         },
         {
+          "type": "double_quote",
+          "named": true
+        },
+        {
           "type": "issue_reference",
           "named": true
         },
@@ -139,6 +136,10 @@
         },
         {
           "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "single_quote",
           "named": true
         },
         {
@@ -186,23 +187,11 @@
     "fields": {}
   },
   {
-    "type": "\n",
-    "named": false
-  },
-  {
     "type": "(",
     "named": false
   },
   {
     "type": ")",
-    "named": false
-  },
-  {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "**",
     "named": false
   },
   {
@@ -214,19 +203,23 @@
     "named": false
   },
   {
-    "type": "\\*",
-    "named": false
+    "type": "bold",
+    "named": true
   },
   {
-    "type": "\\`",
-    "named": false
+    "type": "code",
+    "named": true
   },
   {
-    "type": "`",
-    "named": false
+    "type": "double_quote",
+    "named": true
   },
   {
     "type": "issue_reference",
+    "named": true
+  },
+  {
+    "type": "italic",
     "named": true
   },
   {
@@ -238,7 +231,11 @@
     "named": true
   },
   {
-    "type": "punctuation",
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "single_quote",
     "named": true
   },
   {
