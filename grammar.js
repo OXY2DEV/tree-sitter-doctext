@@ -68,20 +68,18 @@ module.exports = grammar({
       $.bold,
       $.italic,
 
+      $.single_quote,
+      $.double_quote,
+
       $.issue_reference,
-      $.url,
 
       $.word,
       $.number,
       $.punctuation,
 
       $.mention,
+      $.url,
     ),
-
-    issue_reference: _ => token(choice(
-      seq("#", /\d+/),
-      seq(/[a-zA-Z0-9_-]+/, "/", /[a-zA-Z0-9_-]+/, "#", /\d+/)
-    )),
 
     url: _ => token(seq(
       optional(
@@ -97,12 +95,18 @@ module.exports = grammar({
       /[a-zA-Z0-9@:%_\+.~#?&//=-]+/,
     )),
 
+    issue_reference: _ => token(choice(
+      seq("#", /\d+/),
+      seq(/[a-zA-Z0-9_-]+/, "/", /[a-zA-Z0-9_-]+/, "#", /\d+/)
+    )),
+
     code: _ => inlineSyntax("`"),
     italic: _ => inlineSyntax("*"),
     bold: _ => inlineSyntax("**", "*"),
 
-    word: _ => /\w+/,
-    number: _ => choice(
+    single_quote: _ => inlineSyntax("'"),
+    double_quote: _ => inlineSyntax('"'),
+
     word: _ => token(/\w+/),
     number: _ => token(choice(
       /\.\d+/,
