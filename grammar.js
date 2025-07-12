@@ -11,7 +11,7 @@
   * Creates a rule for an inline element.
   */
 function inlineSyntax (delimiter, escaped) {
-  return seq(
+  return token(seq(
     delimiter,
     repeat(
       choice(
@@ -20,7 +20,7 @@ function inlineSyntax (delimiter, escaped) {
       )
     ),
     delimiter,
-  );
+  ));
 }
 
 module.exports = grammar({
@@ -103,11 +103,13 @@ module.exports = grammar({
 
     word: _ => /\w+/,
     number: _ => choice(
+    word: _ => token(/\w+/),
+    number: _ => token(choice(
       /\.\d+/,
       /\d+/,
       /\d+\.\d+/
-    ),
-    punctuation: _ => /\p{P}+/u,
+    )),
+    punctuation: _ => prec(-100, token(/\p{P}/u)),
 
     mention: _ => token(seq(
       "@",
