@@ -126,8 +126,11 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "SYMBOL",
-            "name": "word"
+            "type": "TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "[\\w\\-_]+"
+            }
           },
           "named": true,
           "value": "topic"

@@ -177,11 +177,6 @@
     }
   },
   {
-    "type": "topic",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "word",
     "named": true,
     "fields": {}
@@ -236,6 +231,10 @@
   },
   {
     "type": "single_quote",
+    "named": true
+  },
+  {
+    "type": "topic",
     "named": true
   },
   {

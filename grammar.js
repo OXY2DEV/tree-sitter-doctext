@@ -55,7 +55,10 @@ module.exports = grammar({
     ),
     _decoration: $ => choice(
       $.mention,
-      alias($.word, $.topic),
+      alias(
+        token(/[\w\-_]+/),
+        $.topic
+      ),
     ),
 
     paragraph: $ => prec.right(seq(
