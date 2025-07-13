@@ -9,6 +9,7 @@
       "file-types": [
         "dtxt"
       ],
+      "highlights": "queries/highlights.scm",
       "injection-regex": "^doctext$",
       "class-name": "TreeSitterDoctext"
     }

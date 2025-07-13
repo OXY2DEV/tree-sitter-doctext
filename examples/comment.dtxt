@@ -1,6 +1,24 @@
 feat(@OXY2DEV): Tree-sitter parser for Conventional Comment.
 
-This parsers goal is to provide syntax highlighting for comments & Git commit messages.
-It supports a subset of `markdown`.
+A `tree-sitter` parser for **conventional comment** that supports a subset of markdown.
+It can be used as an injected language for other parsers.
+
+The parser currently supports,
+
+    • **Bold**
+    • *Italic*
+    • `Code`
+    • 'Quoted text'
+    • "Double quoted text"
+    • @mentions
+    • issues/reference#52
+    • https://example.com
+
+With extended suppkrt for **common** comment topics such as,
+
+todo: Some task.
+FIXME: Fix some *issues*.
+
+NOTE(grammar, @OXY2DEV): Add fewtures to grammar.
 
 Author: @OXY2DEV
