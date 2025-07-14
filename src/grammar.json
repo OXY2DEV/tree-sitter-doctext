@@ -14,9 +14,59 @@
           {
             "type": "SYMBOL",
             "name": "paragraph"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "code_block"
           }
         ]
       }
+    },
+    "code_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "```"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[\\w_]+"
+              },
+              "named": true,
+              "value": "language"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\n"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "REPEAT1",
+            "content": {
+              "type": "PATTERN",
+              "value": "."
+            }
+          },
+          "named": true,
+          "value": "content"
+        },
+        {
+          "type": "STRING",
+          "value": "```"
+        }
+      ]
     },
     "task": {
       "type": "PREC_RIGHT",

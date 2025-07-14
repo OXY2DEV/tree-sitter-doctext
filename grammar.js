@@ -31,7 +31,21 @@ module.exports = grammar({
       choice(
         $.task,
         $.paragraph,
+        $.code_block,
       )
+    ),
+
+    code_block: $ => seq(
+      "```",
+      optional(
+        alias(/[\w_]+/, $.language),
+      ),
+      /\n/,
+      alias(
+        repeat1(/./),
+        $.content
+      ),
+      "```"
     ),
 
     task: $ => prec.right(seq(

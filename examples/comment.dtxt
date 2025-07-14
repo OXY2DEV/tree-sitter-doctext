@@ -14,6 +14,10 @@ The parser currently supports,
     • issues/reference#52
     • https://example.com
 
+```lua
+print("Hello, world!");
+```
+
 With extended suppkrt for **common** comment topics such as,
 
 todo: Some task.
