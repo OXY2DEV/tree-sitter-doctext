@@ -1,5 +1,7 @@
 ;;; Inline elements.
 
+((word) @spell)
+
 (italic) @markup.italic
 (bold) @markup.strong
 ((code) @markup.raw @nospell)
