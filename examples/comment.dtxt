@@ -1,7 +1,7 @@
-feat(@OXY2DEV): Tree-sitter parser for Conventional Comment.
+feat(@OXY2DEV): Tree-sitter parser for `Conventional comments`.
 
-A `tree-sitter` parser for **conventional comment** that supports a subset of markdown.
-It can be used as an injected language for other parsers.
+A `tree-sitter` parser for **conventional comments** that supports a subset of `markdown`.
+It can be used as an injected language for other parsers(e.g. for comments).
 
 The parser currently supports,
 
@@ -18,7 +18,7 @@ The parser currently supports,
 print("Hello, world!");
 ```
 
-With extended suppkrt for **common** comment topics such as,
+With support for *common comment topics* such as,
 
 todo: Some task.
 FIXME: Fix some *issues*.
