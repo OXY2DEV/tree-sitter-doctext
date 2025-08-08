@@ -1,6 +1,6 @@
 # tree-sitter-doctext
 
-![Syntax highlighting]("./images/doctext-demo.png")
+![Syntax highlighting](./images/doctext-demo.png)
 
 [Tree-sitter](https://github.com/tree-sitter/tree-sitter) parser for [conventional comments](https://conventionalcomments.org/).
 
