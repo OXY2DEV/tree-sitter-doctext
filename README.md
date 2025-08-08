@@ -9,19 +9,19 @@
 
 ## 💡 Features
 
-- Supports for a subset of `markdown` such as,
+- Supports a subset of `markdown` such as,
     + *Italic text*
     + **Bold text**
     + `Inline_code`
     + `Code blocks`
-- Support for extra syntax such as,
+- Supports extra syntax such as,
     + `'Single quoted text'`
     + `"Double quoted text"`
     + `@mentions`
     + `owner/repo#12`(Issue reference)
     + `https://example.com`(links)
-- Supports correct tree structure for topics, subjects, description.
-- Queries for common comment topics(e.g. NOTE, WIP, FIX etc.).
+- Supports correct tree structure for topics, subjects, description etc. to be leveraged by plugins/external programs.
+- Queries(syntax & injection) for common comment topics(e.g. NOTE, WIP, FIX etc.).
 
 ## 📥 Installation
 
