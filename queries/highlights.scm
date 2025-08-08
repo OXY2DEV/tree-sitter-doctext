@@ -32,8 +32,8 @@
   (#any-of? @comment.note "PRAISE" "praise" "SUGGESTION" "suggestion" "THOUGHT" "thought" "note" "NOTE" "info" "INFO" "XXX"))
 
 (task
-  (label) @comment.warn @nospell
-  (#any-of? @comment.warn "NITPICK" "nitpick" "WARNING" "warning" "FIX" "fix" "HACK" "hack"))
+  (label) @comment.warning @nospell
+  (#any-of? @comment.warning "NITPICK" "nitpick" "WARNING" "warning" "FIX" "fix" "HACK" "hack"))
 
 (task
   (label) @comment.todo @nospell
