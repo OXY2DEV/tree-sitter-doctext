@@ -1,282 +1,280 @@
-{
-  "Ok": [
-    {
-      "type": "code_block",
-      "named": true,
-      "fields": {},
-      "children": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "content",
-            "named": true
-          },
-          {
-            "type": "language",
-            "named": true
-          }
-        ]
-      }
-    },
-    {
-      "type": "content",
-      "named": true,
-      "fields": {}
-    },
-    {
-      "type": "decorations",
-      "named": true,
-      "fields": {},
-      "children": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "mention",
-            "named": true
-          },
-          {
-            "type": "topic",
-            "named": true
-          }
-        ]
-      }
-    },
-    {
-      "type": "documentation",
-      "named": true,
-      "root": true,
-      "fields": {},
-      "children": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "code_block",
-            "named": true
-          },
-          {
-            "type": "paragraph",
-            "named": true
-          },
-          {
-            "type": "task",
-            "named": true
-          }
-        ]
-      }
-    },
-    {
-      "type": "paragraph",
-      "named": true,
-      "fields": {},
-      "children": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "bold",
-            "named": true
-          },
-          {
-            "type": "code",
-            "named": true
-          },
-          {
-            "type": "double_quote",
-            "named": true
-          },
-          {
-            "type": "issue_reference",
-            "named": true
-          },
-          {
-            "type": "italic",
-            "named": true
-          },
-          {
-            "type": "mention",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "punctuation",
-            "named": true
-          },
-          {
-            "type": "single_quote",
-            "named": true
-          },
-          {
-            "type": "url",
-            "named": true
-          },
-          {
-            "type": "word",
-            "named": true
-          }
-        ]
-      }
-    },
-    {
-      "type": "punctuation",
-      "named": true,
-      "fields": {}
-    },
-    {
-      "type": "subject",
-      "named": true,
-      "fields": {},
-      "children": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "bold",
-            "named": true
-          },
-          {
-            "type": "code",
-            "named": true
-          },
-          {
-            "type": "double_quote",
-            "named": true
-          },
-          {
-            "type": "issue_reference",
-            "named": true
-          },
-          {
-            "type": "italic",
-            "named": true
-          },
-          {
-            "type": "mention",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "punctuation",
-            "named": true
-          },
-          {
-            "type": "single_quote",
-            "named": true
-          },
-          {
-            "type": "url",
-            "named": true
-          },
-          {
-            "type": "word",
-            "named": true
-          }
-        ]
-      }
-    },
-    {
-      "type": "task",
-      "named": true,
-      "fields": {},
-      "children": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "decorations",
-            "named": true
-          },
-          {
-            "type": "label",
-            "named": true
-          },
-          {
-            "type": "subject",
-            "named": true
-          }
-        ]
-      }
-    },
-    {
-      "type": "word",
-      "named": true,
-      "fields": {}
-    },
-    {
-      "type": "(",
-      "named": false
-    },
-    {
-      "type": ")",
-      "named": false
-    },
-    {
-      "type": ",",
-      "named": false
-    },
-    {
-      "type": ":",
-      "named": false
-    },
-    {
-      "type": "```",
-      "named": false
-    },
-    {
-      "type": "bold",
-      "named": true
-    },
-    {
-      "type": "code",
-      "named": true
-    },
-    {
-      "type": "double_quote",
-      "named": true
-    },
-    {
-      "type": "issue_reference",
-      "named": true
-    },
-    {
-      "type": "italic",
-      "named": true
-    },
-    {
-      "type": "label",
-      "named": true
-    },
-    {
-      "type": "language",
-      "named": true
-    },
-    {
-      "type": "mention",
-      "named": true
-    },
-    {
-      "type": "number",
-      "named": true
-    },
-    {
-      "type": "single_quote",
-      "named": true
-    },
-    {
-      "type": "topic",
-      "named": true
-    },
-    {
-      "type": "url",
-      "named": true
+[
+  {
+    "type": "code_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "content",
+          "named": true
+        },
+        {
+          "type": "language",
+          "named": true
+        }
+      ]
     }
-  ]
-}
+  },
+  {
+    "type": "content",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "decorations",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "mention",
+          "named": true
+        },
+        {
+          "type": "topic",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "documentation",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        },
+        {
+          "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "task",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "paragraph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "code",
+          "named": true
+        },
+        {
+          "type": "double_quote",
+          "named": true
+        },
+        {
+          "type": "issue_reference",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "mention",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "single_quote",
+          "named": true
+        },
+        {
+          "type": "url",
+          "named": true
+        },
+        {
+          "type": "word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "punctuation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "subject",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "code",
+          "named": true
+        },
+        {
+          "type": "double_quote",
+          "named": true
+        },
+        {
+          "type": "issue_reference",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "mention",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "single_quote",
+          "named": true
+        },
+        {
+          "type": "url",
+          "named": true
+        },
+        {
+          "type": "word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "task",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "decorations",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "subject",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "word",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "```",
+    "named": false
+  },
+  {
+    "type": "bold",
+    "named": true
+  },
+  {
+    "type": "code",
+    "named": true
+  },
+  {
+    "type": "double_quote",
+    "named": true
+  },
+  {
+    "type": "issue_reference",
+    "named": true
+  },
+  {
+    "type": "italic",
+    "named": true
+  },
+  {
+    "type": "label",
+    "named": true
+  },
+  {
+    "type": "language",
+    "named": true
+  },
+  {
+    "type": "mention",
+    "named": true
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "single_quote",
+    "named": true
+  },
+  {
+    "type": "topic",
+    "named": true
+  },
+  {
+    "type": "url",
+    "named": true
+  }
+]

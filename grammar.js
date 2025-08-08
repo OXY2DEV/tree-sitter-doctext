@@ -16,7 +16,8 @@ function inlineSyntax (delimiter, escaped) {
     repeat(
       choice(
         "\\" + (escaped || delimiter),
-        RegExp("[^" + (escaped || delimiter) + "]"),
+        // Do not allow Newlines & Carriage returns within inline elements
+        RegExp("[^\n\r" + (escaped || delimiter) + "]"),
       )
     ),
     delimiter,
