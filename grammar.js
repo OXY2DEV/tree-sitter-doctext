@@ -100,17 +100,12 @@ module.exports = grammar({
     ),
 
     url: _ => token(seq(
-      optional(
-        choice(
-          "http://",
-          "https://",
-        ),
+      choice(
+        "http://",
+        "https://",
+        "www.",
       ),
-      optional("www."),
-      /[a-zA-Z0-9@:%_\+.~#=-]{2,256}/,
-      ".",
-      /[a-z]{2,6}/,
-      /[a-zA-Z0-9@:%_\+.~#?&//=-]+/,
+      /[^\s]+/
     )),
 
     issue_reference: _ => token(choice(

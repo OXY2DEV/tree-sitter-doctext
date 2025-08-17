@@ -273,50 +273,22 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "http://"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "https://"
-                  }
-                ]
+                "type": "STRING",
+                "value": "http://"
               },
               {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "CHOICE",
-            "members": [
+                "type": "STRING",
+                "value": "https://"
+              },
               {
                 "type": "STRING",
                 "value": "www."
-              },
-              {
-                "type": "BLANK"
               }
             ]
           },
           {
             "type": "PATTERN",
-            "value": "[a-zA-Z0-9@:%_\\+.~#=-]{2,256}"
-          },
-          {
-            "type": "STRING",
-            "value": "."
-          },
-          {
-            "type": "PATTERN",
-            "value": "[a-z]{2,6}"
-          },
-          {
-            "type": "PATTERN",
-            "value": "[a-zA-Z0-9@:%_\\+.~#?&//=-]+"
+            "value": "[^\\s]+"
           }
         ]
       }
