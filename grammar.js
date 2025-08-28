@@ -117,7 +117,7 @@ module.exports = grammar({
     italic: _ => inlineSyntax("*"),
     bold: _ => inlineSyntax("**", "*"),
 
-    single_quote: _ => inlineSyntax("'"),
+    single_quote: _ => inlineSyntax("'", " \t'"),
     double_quote: _ => inlineSyntax('"'),
 
     word: _ => token(/\w+/),

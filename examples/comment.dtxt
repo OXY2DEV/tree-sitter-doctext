@@ -8,7 +8,7 @@ The parser currently supports,
     • **Bold**
     • *Italic*
     • `Code`
-    • 'Quoted text'
+    • 'Quoted_text'
     • "Double quoted text"
     • @mentions
     • issues/reference#52
