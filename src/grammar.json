@@ -35,17 +35,13 @@
           "name": "task"
         },
         {
-          "type": "PREC",
-          "value": -1,
+          "type": "ALIAS",
           "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "string"
-            },
-            "named": true,
-            "value": "line"
-          }
+            "type": "SYMBOL",
+            "name": "string"
+          },
+          "named": true,
+          "value": "line"
         },
         {
           "type": "SYMBOL",
@@ -163,8 +159,11 @@
       }
     },
     "comment_string": {
-      "type": "PATTERN",
-      "value": "\\S[^\\n\\r]+"
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\S[^\\n\\r]+"
+      }
     },
     "task": {
       "type": "SEQ",
@@ -176,7 +175,7 @@
             "type": "ALIAS",
             "content": {
               "type": "PATTERN",
-              "value": "\\w+"
+              "value": "[\\w \\t]+"
             },
             "named": true,
             "value": "string"
@@ -409,7 +408,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "\\w+"
+        "value": "[a-zA-Z_-]+"
       }
     },
     "url": {
@@ -667,15 +666,15 @@
         "members": [
           {
             "type": "PATTERN",
-            "value": "\\.\\d+"
+            "value": "[+-]?\\.\\d+"
           },
           {
             "type": "PATTERN",
-            "value": "\\d+"
+            "value": "[+-]?\\d+"
           },
           {
             "type": "PATTERN",
-            "value": "\\d+\\.\\d+"
+            "value": "[+-]?\\d+\\.\\d+"
           }
         ]
       }

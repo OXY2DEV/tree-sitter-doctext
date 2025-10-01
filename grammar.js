@@ -57,7 +57,7 @@ module.exports = grammar({
 
     _documentation_component: $ => choice(
       $.task,
-      prec(-1, alias($.string, $.line)),
+      alias($.string, $.line),
       $.code_block,
       $.comment,
 
@@ -91,14 +91,14 @@ module.exports = grammar({
     comment_delimeter: _ => "#",
 
     comment_property: _ => token(/[^:\s][^:\n\r]+/),
-    comment_string: _ => /\S[^\n\r]+/,
+    comment_string: _ => token(/\S[^\n\r]+/),
 
     //|fE
 
     //|fS "chunk: Task"
 
     task: $ => seq(
-      field("type", alias(/\w+/, $.string)),
+      field("type", alias(/[\w \t]+/, $.string)),
       optional($.task_scope),
 
       optional(
@@ -131,7 +131,7 @@ module.exports = grammar({
 
     //|fE
 
-    //|fS
+    //|fS "chunk: Footer"
 
     footer: $ => seq(
       field("type", alias($.footer_type, $.string)),
@@ -171,7 +171,7 @@ module.exports = grammar({
       $.autolink
     ),
 
-    word: _ => token(/\w+/),
+    word: _ => token(/[a-zA-Z_-]+/),
 
     url: _ => token(
       choice(
@@ -205,9 +205,9 @@ module.exports = grammar({
     double_quote: _ => inlineSyntax('"'),
 
     number: _ => token(choice(
-      /\.\d+/,
-      /\d+/,
-      /\d+\.\d+/
+      /[+-]?\.\d+/,
+      /[+-]?\d+/,
+      /[+-]?\d+\.\d+/
     )),
     punctuation: _ => token(/\p{P}/u),
 

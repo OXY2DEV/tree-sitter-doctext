@@ -1,7 +1,7 @@
 #include "tree_sitter/parser.h"
 
 enum TokenType {
-  NEWLINE_OR_EOF,
+	NEWLINE_OR_EOF,
 };
 
 void *tree_sitter_doctext_external_scanner_create() { return NULL; }
@@ -11,37 +11,39 @@ unsigned tree_sitter_doctext_external_scanner_serialize(void *payload, char *buf
 void tree_sitter_doctext_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {}
 
 bool tree_sitter_doctext_external_scanner_scan(
-  void *payload,
-  TSLexer *lexer,
-  const bool *valid_symbols
+	void *payload,
+	TSLexer *lexer,
+	const bool *valid_symbols
 ) {
-  if (valid_symbols[NEWLINE_OR_EOF]) {
-    if (lexer->eof(lexer)) {
-      lexer->result_symbol = NEWLINE_OR_EOF;
-      return true;
-    }
+	if (valid_symbols[NEWLINE_OR_EOF]) {
+		if (lexer->eof(lexer)) {
+			lexer->result_symbol = NEWLINE_OR_EOF;
+			return true;
+		}
 
-    bool matched = false;
+		bool matched = false;
 
-    while (lexer->lookahead == '\n' || lexer->lookahead == '\r') {
-      matched = true;
+		while (lexer->lookahead == '\n' || lexer->lookahead == '\r') {
+			matched = true;
 
-      if (lexer->lookahead == '\r') {
-        lexer->advance(lexer, true);
+			if (lexer->lookahead == '\r') {
+				lexer->advance(lexer, true);
 
-        if (lexer->lookahead == '\n') {
-          lexer->advance(lexer, true);
-        }
-      } else {
-        lexer->advance(lexer, true);
-      }
-    }
+				if (lexer->lookahead == '\n') {
+					lexer->advance(lexer, true);
+				}
+			} else {
+				lexer->advance(lexer, true);
+			}
+		}
 
-    if (matched) {
-      lexer->result_symbol = NEWLINE_OR_EOF;
-      return true;
-    }
-  }
+		if (matched) {
+			lexer->result_symbol = NEWLINE_OR_EOF;
+			return true;
+		}
+	}
 
-  return false;
+	return false;
 }
+
+// vim:noexpandtab:

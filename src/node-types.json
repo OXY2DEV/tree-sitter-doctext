@@ -324,11 +324,6 @@
     }
   },
   {
-    "type": "word",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "(",
     "named": false
   },
@@ -410,6 +405,10 @@
   },
   {
     "type": "url",
+    "named": true
+  },
+  {
+    "type": "word",
     "named": true
   }
 ]

@@ -61,6 +61,22 @@
 (comment) @comment
 
 (comment
+  property: (string) @label)
+
+(comment
   property: (string) @type
   content: (string) @string)
+
+(comment
+  content: (string) @string.special.url
+  (#match? @string.special.url "[/\\\\]$"))
+
+(comment
+  content: (string) @string.special.url
+  (#match? @string.special.url "\\.\\w+$"))
+
+(comment
+  property: (string) @constant
+  (#any-of? @constant "date" "Date" "Date modified")
+  content: (string) @string.special)
 
