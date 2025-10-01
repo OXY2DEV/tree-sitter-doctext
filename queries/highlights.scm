@@ -1,4 +1,4 @@
-((word) @spell)
+(word) @spell
 
 (italic) @markup.italic
 (bold) @markup.strong
@@ -10,6 +10,11 @@
 (issue_reference) @constant
 
 (number) @number
+
+(mention) @label
+(url) @string.special.url
+(autolink) @markup.link.url
+
 
 [
   (punctuation)
@@ -27,36 +32,35 @@
  ")"
 ] @punctuation.bracket
 
-(mention) @label
-(url) @string.special.url
 
-(_
-  type: (string) @type)
+type: (_) @type
+
+(task_scope
+  (word) @markup.strong)
 
 (breaking) @operator
 
 (_
-  type: (string) @comment.note
+  type: (word) @comment.note
   (#any-of? @comment.note "PRAISE" "praise" "SUGGESTION" "suggestion" "THOUGHT" "thought" "note" "NOTE" "info" "INFO" "XXX" "BREAKING CHANGE"))
-;
+
 (_
-  type: (string) @comment.warning
+  type: (word) @comment.warning
   (#any-of? @comment.warning "NITPICK" "nitpick" "WARNING" "warning" "FIX" "fix" "HACK" "hack"))
 
 (_
-  type: (string) @comment.todo
+  type: (word) @comment.todo
   (#any-of? @comment.todo "TODO" "todo" "TYPO" "typo" "WIP" "wip"))
-;
+
 (_
-  type: (string) @comment.error
+  type: (word) @comment.error
   (#any-of? @comment.error "ISSUE" "issue" "ERROR" "error" "FIXME" "fixme" "DEPRECATED" "deprecated"))
 
-(task_scope
-  (string) @markup.strong)
 
 (code_block
   language: (string) @label
   content: (code_block_content) @markup.raw)
+
 
 (comment) @comment
 
