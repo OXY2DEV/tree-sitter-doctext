@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-doctext
 HOMEPAGE_URL := https://github.com/oxy2dev/tree-sitter-doctext
-VERSION := 1.1.0
+VERSION := 1.1.1
 
 # repository
 SRC_DIR := src

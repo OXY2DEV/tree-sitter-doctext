@@ -40,7 +40,7 @@ module.exports = grammar({
     /[ \t]/,
   ],
 
-  externals: $ => [ $.newlinw_or_eof ],
+  externals: $ => [ $.newline_or_eof ],
 
   rules: {
     //|fS
@@ -50,7 +50,7 @@ module.exports = grammar({
         /[\n\r]+/,
         seq(
           $._documentation_component,
-          $.newlinw_or_eof,
+          $.newline_or_eof,
         )
       ),
     ),
@@ -77,17 +77,21 @@ module.exports = grammar({
       $.comment_delimeter,
       field("property", alias($.comment_property, $.string)),
       ":",
-      field("content", alias($.comment_string, $.string)),
+      optional(
+        field("content", alias($.comment_string, $.string))
+      ),
     ),
     _content_comment: $ => seq(
       $.comment_delimeter,
-      field("content", alias($.comment_property, $.string)),
+      optional(
+        field("content", alias($.comment_property, $.string))
+      ),
     ),
 
     comment_delimeter: _ => "#",
 
     comment_property: _ => token(/[^:\s][^:\n\r]+/),
-    comment_string: _ => /[^ \t][^\n\r]+/,
+    comment_string: _ => /\S[^\n\r]+/,
 
     //|fE
 

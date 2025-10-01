@@ -50,7 +50,7 @@
     "fields": {
       "content": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "string",
@@ -106,7 +106,7 @@
           "named": true
         },
         {
-          "type": "newlinw_or_eof",
+          "type": "newline_or_eof",
           "named": true
         },
         {
@@ -389,7 +389,7 @@
     "named": true
   },
   {
-    "type": "newlinw_or_eof",
+    "type": "newline_or_eof",
     "named": true
   },
   {

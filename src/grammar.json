@@ -20,7 +20,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "newlinw_or_eof"
+                "name": "newline_or_eof"
               }
             ]
           }
@@ -99,17 +99,25 @@
           "value": ":"
         },
         {
-          "type": "FIELD",
-          "name": "content",
-          "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "comment_string"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "content",
+              "content": {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "comment_string"
+                },
+                "named": true,
+                "value": "string"
+              }
             },
-            "named": true,
-            "value": "string"
-          }
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -121,17 +129,25 @@
           "name": "comment_delimeter"
         },
         {
-          "type": "FIELD",
-          "name": "content",
-          "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "comment_property"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "content",
+              "content": {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "comment_property"
+                },
+                "named": true,
+                "value": "string"
+              }
             },
-            "named": true,
-            "value": "string"
-          }
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -148,7 +164,7 @@
     },
     "comment_string": {
       "type": "PATTERN",
-      "value": "[^ \\t][^\\n\\r]+"
+      "value": "\\S[^\\n\\r]+"
     },
     "task": {
       "type": "SEQ",
@@ -776,7 +792,7 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "newlinw_or_eof"
+      "name": "newline_or_eof"
     }
   ],
   "inline": [],
