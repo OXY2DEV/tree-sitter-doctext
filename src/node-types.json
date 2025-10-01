@@ -98,7 +98,15 @@
           "named": true
         },
         {
+          "type": "footer",
+          "named": true
+        },
+        {
           "type": "line",
+          "named": true
+        },
+        {
+          "type": "newlinw_or_eof",
           "named": true
         },
         {
@@ -106,6 +114,32 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "footer",
+    "named": true,
+    "fields": {
+      "description": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -311,6 +345,10 @@
     "named": false
   },
   {
+    "type": "BREAKING CHANGE",
+    "named": false
+  },
+  {
     "type": "autolink",
     "named": true
   },
@@ -348,6 +386,10 @@
   },
   {
     "type": "mention",
+    "named": true
+  },
+  {
+    "type": "newlinw_or_eof",
     "named": true
   },
   {

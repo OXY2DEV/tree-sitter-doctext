@@ -40,20 +40,29 @@ module.exports = grammar({
     /[ \t]/,
   ],
 
+  externals: $ => [ $.newlinw_or_eof ],
+
   rules: {
     //|fS
 
-    documentation: $ => repeat($._documentation_component),
+    documentation: $ => repeat(
+      choice(
+        /[\n\r]+/,
+        seq(
+          $._documentation_component,
+          $.newlinw_or_eof,
+        )
+      ),
+    ),
 
     _documentation_component: $ => choice(
       $.task,
       prec(-1, alias($.string, $.line)),
       $.code_block,
       $.comment,
-      $._newlines,
-    ),
 
-    _newlines: _ => prec(-1, /[\n\r]+/),
+      $.footer
+    ),
 
     //|fE
 
@@ -114,6 +123,23 @@ module.exports = grammar({
       $.mention,
       $.issue_reference,
       alias(/[^\s,\)\(@#]+/, $.string)
+    ),
+
+    //|fE
+
+    //|fS
+
+    footer: $ => seq(
+      field("type", alias($.footer_type, $.string)),
+      token.immediate(
+        choice(":", "#")
+      ),
+      field("description", $.string),
+    ),
+
+    footer_type: _ => choice(
+      "BREAKING CHANGE",
+      /\w[^:#\s\(\!]*/
     ),
 
     //|fE

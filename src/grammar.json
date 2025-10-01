@@ -5,8 +5,26 @@
     "documentation": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "_documentation_component"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[\\n\\r]+"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_documentation_component"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "newlinw_or_eof"
+              }
+            ]
+          }
+        ]
       }
     },
     "_documentation_component": {
@@ -39,17 +57,9 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_newlines"
+          "name": "footer"
         }
       ]
-    },
-    "_newlines": {
-      "type": "PREC",
-      "value": -1,
-      "content": {
-        "type": "PATTERN",
-        "value": "[\\n\\r]+"
-      }
     },
     "comment": {
       "type": "CHOICE",
@@ -257,6 +267,61 @@
           },
           "named": true,
           "value": "string"
+        }
+      ]
+    },
+    "footer": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "type",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "footer_type"
+            },
+            "named": true,
+            "value": "string"
+          }
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ":"
+              },
+              {
+                "type": "STRING",
+                "value": "#"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "description",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        }
+      ]
+    },
+    "footer_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "BREAKING CHANGE"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\w[^:#\\s\\(\\!]*"
         }
       ]
     },
@@ -708,7 +773,12 @@
   ],
   "conflicts": [],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "newlinw_or_eof"
+    }
+  ],
   "inline": [],
   "supertypes": [],
   "reserved": {}

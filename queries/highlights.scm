@@ -30,24 +30,24 @@
 (mention) @label
 (url) @string.special.url
 
-(task
+(_
   type: (string) @type)
 
 (breaking) @operator
 
-(task
+(_
   type: (string) @comment.note
-  (#any-of? @comment.note "PRAISE" "praise" "SUGGESTION" "suggestion" "THOUGHT" "thought" "note" "NOTE" "info" "INFO" "XXX"))
+  (#any-of? @comment.note "PRAISE" "praise" "SUGGESTION" "suggestion" "THOUGHT" "thought" "note" "NOTE" "info" "INFO" "XXX" "BREAKING CHANGE"))
 ;
-(task
+(_
   type: (string) @comment.warning
   (#any-of? @comment.warning "NITPICK" "nitpick" "WARNING" "warning" "FIX" "fix" "HACK" "hack"))
 
-(task
+(_
   type: (string) @comment.todo
   (#any-of? @comment.todo "TODO" "todo" "TYPO" "typo" "WIP" "wip"))
 ;
-(task
+(_
   type: (string) @comment.error
   (#any-of? @comment.error "ISSUE" "issue" "ERROR" "error" "FIXME" "fixme" "DEPRECATED" "deprecated"))
 
