@@ -1,59 +1,66 @@
-;;; Inline elements.
-
 ((word) @spell)
 
 (italic) @markup.italic
 (bold) @markup.strong
-((code) @markup.raw @nospell)
+(code) @markup.raw
 
 (single_quote) @markup.link
-(double_quote) @markup.quote @nospell
+(double_quote) @markup.quote
 
-(issue_reference) @constant @nospell
+(issue_reference) @constant
 
 (number) @number
-; (punctuation) @punctuation.delimiter
+
+[
+  (punctuation)
+  (start_delimeter)
+  (end_delimeter)
+] @punctuation.delimiter
+
+[
+ ":"
+ ","
+] @punctuation.delimiter
+
+[
+ "("
+ ")"
+] @punctuation.bracket
 
 (mention) @label
-(url) @string.special.url @nospell
-
-
-;; Task specific highlights
+(url) @string.special.url
 
 (task
-  (label) @markup.strong)
+  type: (string) @type)
+
+(breaking) @operator
 
 (task
-  (decorations
-    (topic) @markup.strong))
-
-(task
-  (label) @comment.note @nospell
+  type: (string) @comment.note
   (#any-of? @comment.note "PRAISE" "praise" "SUGGESTION" "suggestion" "THOUGHT" "thought" "note" "NOTE" "info" "INFO" "XXX"))
-
+;
 (task
-  (label) @comment.warning @nospell
+  type: (string) @comment.warning
   (#any-of? @comment.warning "NITPICK" "nitpick" "WARNING" "warning" "FIX" "fix" "HACK" "hack"))
 
 (task
-  (label) @comment.todo @nospell
+  type: (string) @comment.todo
   (#any-of? @comment.todo "TODO" "todo" "TYPO" "typo" "WIP" "wip"))
-
+;
 (task
-  (label) @comment.error @nospell
+  type: (string) @comment.error
   (#any-of? @comment.error "ISSUE" "issue" "ERROR" "error" "FIXME" "fixme" "DEPRECATED" "deprecated"))
 
-(task
-  (label)
-  (decorations
-    (topic) @markup.strong))
-
-((task)
- (paragraph) @comment)
-
-
-;; Code block
+(task_scope
+  (string) @markup.strong)
 
 (code_block
-  "```" @punctuation.delimiter
-  (language) @markup.raw)
+  language: (string) @label
+  content: (code_block_content) @markup.raw)
+
+(comment) @comment
+
+(comment
+  property: (string) @type
+  content: (string) @string)
+

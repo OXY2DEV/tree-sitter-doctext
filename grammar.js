@@ -10,78 +10,119 @@
 /*
   * Creates a rule for an inline element.
   */
+/**
+ * @file Tree-sitter parser for writing documentation in plaintext(usually as comments in code)
+ * 
+ * @license MIT
+ * @param {RuleOrLiteral} delimiter
+ * @param {string | undefined} [escaped]
+ */
 function inlineSyntax (delimiter, escaped) {
-  return token(seq(
-    delimiter,
-    repeat(
-      choice(
-        "\\" + (escaped || delimiter),
-        // Do not allow Newlines & Carriage returns within inline elements
-        RegExp("[^\n\r" + (escaped || delimiter) + "]"),
-      )
-    ),
-    delimiter,
-  ));
+  return token(
+    seq(
+      delimiter,
+      repeat(
+        choice(
+          "\\" + (escaped || delimiter),
+          // Do not allow Newlines & Carriage returns within inline elements
+          RegExp("[^\n\r" + (escaped || delimiter) + "]"),
+        )
+      ),
+      delimiter,
+    )
+  );
 }
 
 module.exports = grammar({
   name: "doctext",
 
+  extras: _ => [
+    /[ \t]/,
+  ],
+
   rules: {
-    documentation: $ => repeat(
-      choice(
-        $.task,
-        $.paragraph,
-        $.code_block,
-      )
+    //|fS
+
+    documentation: $ => repeat($._documentation_component),
+
+    _documentation_component: $ => choice(
+      $.task,
+      prec(-1, alias($.string, $.line)),
+      $.code_block,
+      $.comment,
+      $._newlines,
     ),
 
-    code_block: $ => seq(
-      "```",
+    _newlines: _ => prec(-1, /[\n\r]+/),
+
+    //|fE
+
+    //|fS "chunk: Comment"
+
+    comment: $ => choice(
+      $._property_comment,
+      $._content_comment
+    ),
+
+    _property_comment: $ => seq(
+      $.comment_delimeter,
+      field("property", alias($.comment_property, $.string)),
+      ":",
+      field("content", alias($.comment_string, $.string)),
+    ),
+    _content_comment: $ => seq(
+      $.comment_delimeter,
+      field("content", alias($.comment_property, $.string)),
+    ),
+
+    comment_delimeter: _ => "#",
+
+    comment_property: _ => token(/[^:\s][^:\n\r]+/),
+    comment_string: _ => /[^ \t][^\n\r]+/,
+
+    //|fE
+
+    //|fS "chunk: Task"
+
+    task: $ => seq(
+      field("type", alias(/\w+/, $.string)),
+      optional($.task_scope),
+
       optional(
-        alias(/[\w_]+/, $.language),
+        alias(
+          token.immediate("!"),
+          $.breaking
+        )
       ),
-      /\n/,
-      alias(
-        repeat1(/./),
-        $.content
-      ),
-      "```"
+      token.immediate(":"),
+      field("description", $.string),
     ),
 
-    task: $ => prec.right(seq(
-      alias(/\w+/, $.label),
-      optional($.decorations),
-      token.immediate(":"),
-
-      alias(repeat1($._inline), $.subject),
-      optional(/\n+/),
-    )),
-
-    decorations: $ => seq(
+    task_scope: $ => seq(
       "(",
-      repeat1(
+      $._scope_name,
+      repeat(
         seq(
-          $._decoration,
-          optional(","),
+          ",",
+          $._scope_name
         )
       ),
       ")",
     ),
-    _decoration: $ => choice(
+
+    _scope_name: $ => choice(
       $.mention,
-      alias(
-        token(/[\w\-_]+/),
-        $.topic
-      ),
+      $.issue_reference,
+      alias(/[^\s,\)\(@#]+/, $.string)
     ),
 
-    paragraph: $ => prec.right(seq(
-      repeat1($._inline),
-      optional(/\n{2,}/)
-    )),
+    //|fE
 
-    _inline: $ => choice(
+    //|fS "chunk: String"
+
+    string: $ => prec.right(repeat1($._string_component)),
+
+    _string_component: $ => choice(
       $.code,
       $.bold,
       $.italic,
@@ -97,41 +138,84 @@ module.exports = grammar({
 
       $.mention,
       $.url,
+      $.autolink
     ),
 
-    url: _ => token(seq(
+    word: _ => token(/\w+/),
+
+    url: _ => token(
       choice(
-        "http://",
-        "https://",
-        "www.",
-      ),
-      /[^\s]+/
-    )),
+        /http:\/\/\S+/,
+        /https:\/\/\S+/,
+        /www\.\S+/,
+      )
+    ),
 
     issue_reference: _ => token(choice(
-      seq("#", /\d+/),
-      seq(/[a-zA-Z0-9_-]+/, "/", /[a-zA-Z0-9_-]+/, "#", /\d+/)
+      seq(
+        "#",
+        token.immediate(/\d+/)
+      ),
+      seq(
+        /[a-zA-Z0-9_-]+/,
+        token.immediate("/"),
+        token.immediate(/[a-zA-Z0-9_-]+/),
+        token.immediate("#"),
+        token.immediate(/\d+/),
+      )
     )),
 
     code: _ => inlineSyntax("`"),
     italic: _ => inlineSyntax("*"),
     bold: _ => inlineSyntax("**", "*"),
 
-    single_quote: _ => inlineSyntax("'", " \t'"),
+    autolink: _ => token(/<[^>]+>/),
+
+    single_quote: _ => inlineSyntax("'"),
     double_quote: _ => inlineSyntax('"'),
 
-    word: _ => token(/\w+/),
     number: _ => token(choice(
       /\.\d+/,
       /\d+/,
       /\d+\.\d+/
     )),
-    punctuation: _ => prec(-100, token(/\p{P}/u)),
+    punctuation: _ => token(/\p{P}/u),
 
     mention: _ => token(seq(
       "@",
       /\w+/
     )),
+
+    //|fE
+
+    //|fS "chunk: Code blocks"
+
+    code_block: $ => seq(
+      alias("```", $.start_delimeter),
+      optional(
+        field(
+          "language",
+          alias(/[\w_]+/, $.string)
+        )
+      ),
+      /\n/,
+      field(
+        "content",
+        $.code_block_content,
+      ),
+      alias("```", $.end_delimeter),
+    ),
+
+    code_block_content: _ => prec.right(
+      repeat1(
+        choice(
+          /[^`]+/,
+          /`\{1,2}[^`]+/,
+        )
+      )
+    ),
+
+    //|fE
   }
 });
 

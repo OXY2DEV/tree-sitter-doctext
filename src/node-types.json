@@ -2,41 +2,79 @@
   {
     "type": "code_block",
     "named": true,
-    "fields": {},
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "code_block_content",
+            "named": true
+          }
+        ]
+      },
+      "language": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "content",
+          "type": "end_delimeter",
           "named": true
         },
         {
-          "type": "language",
+          "type": "start_delimeter",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "content",
+    "type": "code_block_content",
     "named": true,
     "fields": {}
   },
   {
-    "type": "decorations",
+    "type": "comment",
     "named": true,
-    "fields": {},
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "property": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "mention",
-          "named": true
-        },
-        {
-          "type": "topic",
+          "type": "comment_delimeter",
           "named": true
         }
       ]
@@ -56,7 +94,11 @@
           "named": true
         },
         {
-          "type": "paragraph",
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "line",
           "named": true
         },
         {
@@ -67,13 +109,17 @@
     }
   },
   {
-    "type": "paragraph",
+    "type": "line",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "autolink",
+          "named": true
+        },
         {
           "type": "bold",
           "named": true
@@ -122,18 +168,17 @@
     }
   },
   {
-    "type": "punctuation",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "subject",
+    "type": "string",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
+        {
+          "type": "autolink",
+          "named": true
+        },
         {
           "type": "bold",
           "named": true
@@ -184,21 +229,61 @@
   {
     "type": "task",
     "named": true,
+    "fields": {
+      "description": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "breaking",
+          "named": true
+        },
+        {
+          "type": "task_scope",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "task_scope",
+    "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "decorations",
+          "type": "issue_reference",
           "named": true
         },
         {
-          "type": "label",
+          "type": "mention",
           "named": true
         },
         {
-          "type": "subject",
+          "type": "string",
           "named": true
         }
       ]
@@ -226,11 +311,15 @@
     "named": false
   },
   {
-    "type": "```",
-    "named": false
+    "type": "autolink",
+    "named": true
   },
   {
     "type": "bold",
+    "named": true
+  },
+  {
+    "type": "breaking",
     "named": true
   },
   {
@@ -238,7 +327,15 @@
     "named": true
   },
   {
+    "type": "comment_delimeter",
+    "named": true
+  },
+  {
     "type": "double_quote",
+    "named": true
+  },
+  {
+    "type": "end_delimeter",
     "named": true
   },
   {
@@ -250,14 +347,6 @@
     "named": true
   },
   {
-    "type": "label",
-    "named": true
-  },
-  {
-    "type": "language",
-    "named": true
-  },
-  {
     "type": "mention",
     "named": true
   },
@@ -266,11 +355,15 @@
     "named": true
   },
   {
+    "type": "punctuation",
+    "named": true
+  },
+  {
     "type": "single_quote",
     "named": true
   },
   {
-    "type": "topic",
+    "type": "start_delimeter",
     "named": true
   },
   {
