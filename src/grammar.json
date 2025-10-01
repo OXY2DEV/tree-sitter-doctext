@@ -177,7 +177,7 @@
           "name": "type",
           "content": {
             "type": "SYMBOL",
-            "name": "task_type"
+            "name": "word"
           }
         },
         {
@@ -229,10 +229,6 @@
         }
       ]
     },
-    "task_type": {
-      "type": "SYMBOL",
-      "name": "word"
-    },
     "task_scope": {
       "type": "SEQ",
       "members": [
@@ -278,13 +274,8 @@
           "name": "issue_reference"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "[^\\s,\\)\\(@#]+"
-          },
-          "named": true,
-          "value": "scope"
+          "type": "SYMBOL",
+          "name": "word"
         }
       ]
     },
@@ -334,7 +325,7 @@
         },
         {
           "type": "STRING",
-          "value": "Date modified"
+          "value": "Last Change"
         },
         {
           "type": "SEQ",

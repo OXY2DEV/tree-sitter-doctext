@@ -100,7 +100,7 @@ module.exports = grammar({
     //|fS "chunk: Task"
 
     task: $ => seq(
-      field("type", $.task_type),
+      field("type", $.word),
       optional($.task_scope),
 
       optional(
@@ -112,8 +112,6 @@ module.exports = grammar({
       token.immediate(":"),
       field("description", $.string),
     ),
-
-    task_type: $ => $.word,
 
     task_scope: $ => seq(
       "(",
@@ -130,7 +128,7 @@ module.exports = grammar({
     _scope_name: $ => choice(
       $.mention,
       $.issue_reference,
-      alias(/[^\s,\)\(@#]+/, $.scope)
+      $.word
     ),
 
     //|fE
@@ -147,7 +145,7 @@ module.exports = grammar({
 
     footer_type: $ => choice(
       "BREAKING CHANGE",
-      "Date modified",
+      "Last Change",
       seq(
         $.word,
         repeat(

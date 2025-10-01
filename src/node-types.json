@@ -294,7 +294,7 @@
         "required": true,
         "types": [
           {
-            "type": "task_type",
+            "type": "word",
             "named": true
           }
         ]
@@ -332,21 +332,6 @@
           "named": true
         },
         {
-          "type": "scope",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "task_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
           "type": "word",
           "named": true
         }
@@ -378,7 +363,7 @@
     "named": false
   },
   {
-    "type": "Date modified",
+    "type": "Last Change",
     "named": false
   },
   {
@@ -431,10 +416,6 @@
   },
   {
     "type": "punctuation",
-    "named": true
-  },
-  {
-    "type": "scope",
     "named": true
   },
   {
