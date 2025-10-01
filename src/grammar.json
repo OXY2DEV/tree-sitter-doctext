@@ -12,20 +12,24 @@
             "value": "[\\n\\r]+"
           },
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_documentation_component"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "newline_or_eof"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "_documentation_line"
           }
         ]
       }
+    },
+    "_documentation_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_documentation_component"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "newline_or_eof"
+        }
+      ]
     },
     "_documentation_component": {
       "type": "CHOICE",
@@ -35,13 +39,8 @@
           "name": "task"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string"
-          },
-          "named": true,
-          "value": "line"
+          "type": "SYMBOL",
+          "name": "footer"
         },
         {
           "type": "SYMBOL",
@@ -52,8 +51,13 @@
           "name": "comment"
         },
         {
-          "type": "SYMBOL",
-          "name": "footer"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          },
+          "named": true,
+          "value": "line"
         }
       ]
     },
@@ -172,13 +176,8 @@
           "type": "FIELD",
           "name": "type",
           "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "PATTERN",
-              "value": "[\\w \\t]+"
-            },
-            "named": true,
-            "value": "string"
+            "type": "SYMBOL",
+            "name": "task_type"
           }
         },
         {
@@ -229,6 +228,10 @@
           }
         }
       ]
+    },
+    "task_type": {
+      "type": "SYMBOL",
+      "name": "word"
     },
     "task_scope": {
       "type": "SEQ",
@@ -281,7 +284,7 @@
             "value": "[^\\s,\\)\\(@#]+"
           },
           "named": true,
-          "value": "string"
+          "value": "scope"
         }
       ]
     },
@@ -292,13 +295,8 @@
           "type": "FIELD",
           "name": "type",
           "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "footer_type"
-            },
-            "named": true,
-            "value": "string"
+            "type": "SYMBOL",
+            "name": "footer_type"
           }
         },
         {
@@ -335,74 +333,99 @@
           "value": "BREAKING CHANGE"
         },
         {
-          "type": "PATTERN",
-          "value": "\\w[^:#\\s\\(\\!]*"
+          "type": "STRING",
+          "value": "Date modified"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "word"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "-"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "word"
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     },
     "string": {
-      "type": "PREC_RIGHT",
-      "value": 0,
+      "type": "REPEAT1",
       "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "SYMBOL",
-          "name": "_string_component"
-        }
+        "type": "SYMBOL",
+        "name": "_string_component"
       }
     },
     "_string_component": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "code"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "bold"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "italic"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "single_quote"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "double_quote"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "issue_reference"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "word"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "number"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "punctuation"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "mention"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "url"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "autolink"
-        }
-      ]
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "code"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "bold"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "italic"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "single_quote"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "double_quote"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "issue_reference"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "word"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "number"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "punctuation"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "mention"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "url"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "autolink"
+          }
+        ]
+      }
     },
     "word": {
       "type": "TOKEN",

@@ -48,20 +48,22 @@ module.exports = grammar({
     documentation: $ => repeat(
       choice(
         /[\n\r]+/,
-        seq(
-          $._documentation_component,
-          $.newline_or_eof,
-        )
+        $._documentation_line
       ),
+    ),
+
+    _documentation_line: $ => seq(
+      $._documentation_component,
+      $.newline_or_eof,
     ),
 
     _documentation_component: $ => choice(
       $.task,
-      alias($.string, $.line),
+      $.footer,
       $.code_block,
       $.comment,
 
-      $.footer
+      alias($.string, $.line),
     ),
 
     //|fE
@@ -98,7 +100,7 @@ module.exports = grammar({
     //|fS "chunk: Task"
 
     task: $ => seq(
-      field("type", alias(/[\w \t]+/, $.string)),
+      field("type", $.task_type),
       optional($.task_scope),
 
       optional(
@@ -110,6 +112,8 @@ module.exports = grammar({
       token.immediate(":"),
       field("description", $.string),
     ),
+
+    task_type: $ => $.word,
 
     task_scope: $ => seq(
       "(",
@@ -126,7 +130,7 @@ module.exports = grammar({
     _scope_name: $ => choice(
       $.mention,
       $.issue_reference,
-      alias(/[^\s,\)\(@#]+/, $.string)
+      alias(/[^\s,\)\(@#]+/, $.scope)
     ),
 
     //|fE
@@ -134,25 +138,31 @@ module.exports = grammar({
     //|fS "chunk: Footer"
 
     footer: $ => seq(
-      field("type", alias($.footer_type, $.string)),
+      field("type", $.footer_type),
       token.immediate(
         choice(":", "#")
       ),
       field("description", $.string),
     ),
 
-    footer_type: _ => choice(
+    footer_type: $ => choice(
       "BREAKING CHANGE",
-      /\w[^:#\s\(\!]*/
+      "Date modified",
+      seq(
+        $.word,
+        repeat(
+          seq("-", $.word,)
+        )
+      ),
     ),
 
     //|fE
 
     //|fS "chunk: String"
 
-    string: $ => prec.right(repeat1($._string_component)),
+    string: $ => repeat1($._string_component),
 
-    _string_component: $ => choice(
+    _string_component: $ => prec.left(choice(
       $.code,
       $.bold,
       $.italic,
@@ -169,7 +179,7 @@ module.exports = grammar({
       $.mention,
       $.url,
       $.autolink
-    ),
+    )),
 
     word: _ => token(/[a-zA-Z_-]+/),
 

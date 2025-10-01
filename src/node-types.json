@@ -135,11 +135,26 @@
         "required": true,
         "types": [
           {
-            "type": "string",
+            "type": "footer_type",
             "named": true
           }
         ]
       }
+    }
+  },
+  {
+    "type": "footer_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "word",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -279,7 +294,7 @@
         "required": true,
         "types": [
           {
-            "type": "string",
+            "type": "task_type",
             "named": true
           }
         ]
@@ -317,7 +332,22 @@
           "named": true
         },
         {
-          "type": "string",
+          "type": "scope",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "task_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "word",
           "named": true
         }
       ]
@@ -336,11 +366,19 @@
     "named": false
   },
   {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
   {
     "type": "BREAKING CHANGE",
+    "named": false
+  },
+  {
+    "type": "Date modified",
     "named": false
   },
   {
@@ -393,6 +431,10 @@
   },
   {
     "type": "punctuation",
+    "named": true
+  },
+  {
+    "type": "scope",
     "named": true
   },
   {
