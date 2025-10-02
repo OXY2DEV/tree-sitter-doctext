@@ -40,15 +40,18 @@ module.exports = grammar({
     /[ \t]/,
   ],
 
-  externals: $ => [ $.newline_or_eof ],
+  externals: $ => [ $.newline_or_eof, $.injection_delimiter ],
 
   rules: {
     //|fS
 
-    documentation: $ => repeat(
-      choice(
-        /[\n\r]+/,
-        $._documentation_line
+    documentation: $ => seq(
+      optional($.injection_delimiter),
+      repeat(
+        choice(
+          /[\n\r]+/,
+          $._documentation_line
+        )
       ),
     ),
 
@@ -76,7 +79,7 @@ module.exports = grammar({
     ),
 
     _property_comment: $ => seq(
-      $.comment_delimeter,
+      $.comment_delimiter,
       field("property", alias($.comment_property, $.string)),
       ":",
       optional(
@@ -84,13 +87,13 @@ module.exports = grammar({
       ),
     ),
     _content_comment: $ => seq(
-      $.comment_delimeter,
+      $.comment_delimiter,
       optional(
         field("content", alias($.comment_property, $.string))
       ),
     ),
 
-    comment_delimeter: _ => "#",
+    comment_delimiter: _ => "#",
 
     comment_property: _ => token(/[^:\s][^:\n\r]+/),
     comment_string: _ => token(/\S[^\n\r]+/),
@@ -221,7 +224,7 @@ module.exports = grammar({
 
     mention: _ => token(seq(
       "@",
-      /\w+/
+      /[a-zA-Z0-9_-]+/
     )),
 
     //|fE
@@ -229,7 +232,7 @@ module.exports = grammar({
     //|fS "chunk: Code blocks"
 
     code_block: $ => seq(
-      alias("```", $.start_delimeter),
+      alias("```", $.start_delimiter),
       optional(
         field(
           "language",
@@ -241,7 +244,7 @@ module.exports = grammar({
         "content",
         $.code_block_content,
       ),
-      alias("```", $.end_delimeter),
+      alias("```", $.end_delimiter),
     ),
 
     code_block_content: _ => prec.right(

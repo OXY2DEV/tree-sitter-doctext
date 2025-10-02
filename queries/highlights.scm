@@ -18,8 +18,9 @@
 
 [
   (punctuation)
-  (start_delimeter)
-  (end_delimeter)
+  (start_delimiter)
+  (end_delimiter)
+  (injection_delimiter)
 ] @punctuation.delimiter
 
 [

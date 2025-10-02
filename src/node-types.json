@@ -29,11 +29,11 @@
       "required": true,
       "types": [
         {
-          "type": "end_delimeter",
+          "type": "end_delimiter",
           "named": true
         },
         {
-          "type": "start_delimeter",
+          "type": "start_delimiter",
           "named": true
         }
       ]
@@ -74,7 +74,7 @@
       "required": true,
       "types": [
         {
-          "type": "comment_delimeter",
+          "type": "comment_delimiter",
           "named": true
         }
       ]
@@ -99,6 +99,10 @@
         },
         {
           "type": "footer",
+          "named": true
+        },
+        {
+          "type": "injection_delimiter",
           "named": true
         },
         {
@@ -383,7 +387,7 @@
     "named": true
   },
   {
-    "type": "comment_delimeter",
+    "type": "comment_delimiter",
     "named": true
   },
   {
@@ -391,7 +395,11 @@
     "named": true
   },
   {
-    "type": "end_delimeter",
+    "type": "end_delimiter",
+    "named": true
+  },
+  {
+    "type": "injection_delimiter",
     "named": true
   },
   {
@@ -423,7 +431,7 @@
     "named": true
   },
   {
-    "type": "start_delimeter",
+    "type": "start_delimiter",
     "named": true
   },
   {

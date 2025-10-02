@@ -1,7 +1,9 @@
 #include "tree_sitter/parser.h"
+#include <ctype.h>
 
 enum TokenType {
 	NEWLINE_OR_EOF,
+	INJECTION_DELIMITER
 };
 
 void *tree_sitter_doctext_external_scanner_create() { return NULL; }
@@ -41,6 +43,19 @@ bool tree_sitter_doctext_external_scanner_scan(
 			lexer->result_symbol = NEWLINE_OR_EOF;
 			return true;
 		}
+	} else if (valid_symbols[INJECTION_DELIMITER]) {
+		if (lexer->eof(lexer)) {
+			return false;
+		} else if (!ispunct(lexer->lookahead)) {
+			return false;
+		}
+
+		while (ispunct(lexer->lookahead)) {
+			lexer->advance(lexer, false);
+		}
+
+		lexer->result_symbol = INJECTION_DELIMITER;
+		return true;
 	}
 
 	return false;

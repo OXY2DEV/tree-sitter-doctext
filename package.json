@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-doctext",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Tree-sitter parser for writing documentation in plaintext(usually as comments in code)",
   "repository": "https://github.com/oxy2dev/tree-sitter-doctext",
   "license": "MIT",
