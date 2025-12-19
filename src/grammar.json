@@ -291,8 +291,16 @@
           "name": "issue_reference"
         },
         {
-          "type": "SYMBOL",
-          "name": "word"
+          "type": "ALIAS",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "[0-9a-zA-Z_-]+"
+            }
+          },
+          "named": true,
+          "value": "word"
         }
       ]
     },

@@ -131,7 +131,7 @@ module.exports = grammar({
     _scope_name: $ => choice(
       $.mention,
       $.issue_reference,
-      $.word
+      alias(token(/[0-9a-zA-Z_-]+/), $.word) // Topic names may have `numbers` in them.
     ),
 
     //|fE

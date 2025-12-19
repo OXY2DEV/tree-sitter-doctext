@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-doctext
-        VERSION "1.2.1"
+        VERSION "1.2.2"
         DESCRIPTION "Tree-sitter parser for writing documentation in plaintext(usually as comments in code)"
         HOMEPAGE_URL "https://github.com/oxy2dev/tree-sitter-doctext"
         LANGUAGES C)
