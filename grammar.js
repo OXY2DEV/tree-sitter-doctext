@@ -212,7 +212,8 @@ module.exports = grammar({
 
     autolink: _ => token(/<[^>]+>/),
 
-    single_quote: _ => inlineSyntax("'"),
+    // Single quotes can't have spaces & tabs inside them.
+    single_quote: _ => inlineSyntax("'", "\t '"),
     double_quote: _ => inlineSyntax('"'),
 
     number: _ => token(choice(

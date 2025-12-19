@@ -642,11 +642,11 @@
               "members": [
                 {
                   "type": "STRING",
-                  "value": "\\'"
+                  "value": "\\\t '"
                 },
                 {
                   "type": "PATTERN",
-                  "value": "[^\\n\\r']"
+                  "value": "[^\\n\\r\t ']"
                 }
               ]
             }
