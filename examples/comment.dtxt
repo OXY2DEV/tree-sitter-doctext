@@ -13,6 +13,7 @@ The parser currently supports,
     • @mentions
     • issues/reference#52
     • https://example.com
+    • |help-section|
 
 ```lua
 print("Hello, world!");

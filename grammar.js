@@ -179,7 +179,9 @@ module.exports = grammar({
 
       $.mention,
       $.url,
-      $.autolink
+      $.autolink,
+
+      $.taglink,
     )),
 
     word: _ => token(/[a-zA-Z_-]+/),
@@ -227,6 +229,8 @@ module.exports = grammar({
       "@",
       /[a-zA-Z0-9_-]+/
     )),
+
+    taglink: _ => inlineSyntax("|", "\t \|"),
 
     //|fE
 

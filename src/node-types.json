@@ -210,6 +210,10 @@
           "named": true
         },
         {
+          "type": "taglink",
+          "named": true
+        },
+        {
           "type": "url",
           "named": true
         },
@@ -266,6 +270,10 @@
         },
         {
           "type": "single_quote",
+          "named": true
+        },
+        {
+          "type": "taglink",
           "named": true
         },
         {
@@ -432,6 +440,10 @@
   },
   {
     "type": "start_delimiter",
+    "named": true
+  },
+  {
+    "type": "taglink",
     "named": true
   },
   {

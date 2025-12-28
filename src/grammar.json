@@ -439,6 +439,10 @@
           {
             "type": "SYMBOL",
             "name": "autolink"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "taglink"
           }
         ]
       }
@@ -738,6 +742,38 @@
           {
             "type": "PATTERN",
             "value": "[a-zA-Z0-9_-]+"
+          }
+        ]
+      }
+    },
+    "taglink": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "|"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "\\\t |"
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "[^\\n\\r\t |]"
+                }
+              ]
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "|"
           }
         ]
       }
