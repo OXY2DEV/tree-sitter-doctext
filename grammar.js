@@ -34,7 +34,7 @@ function inlineSyntax (delimiter, escaped) {
 }
 
 module.exports = grammar({
-  name: "doctext",
+  name: "comment",
 
   extras: _ => [
     /[ \t]/,

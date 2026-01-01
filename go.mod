@@ -1,4 +1,4 @@
-module github.com/oxy2dev/tree-sitter-doctext
+module github.com/oxy2dev/tree-sitter-comment
 
 go 1.22
 

@@ -1,6 +1,6 @@
-# tree-sitter-doctext
+# tree-sitter-comment
 
-![Syntax highlighting](./images/doctext-demo.png)
+![Syntax highlighting](./images/comment-demo.png)
 
 [Tree-sitter](https://github.com/tree-sitter/tree-sitter) parser for [conventional comments](https://conventionalcomments.org/).
 
@@ -35,9 +35,9 @@ Put this in your `nvim-treesitter` config,
 ```lua
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs();
 
-parser_configs.doctext = {
+parser_configs.comment = {
     install_info = {
-        url = "https://github.com/OXY2DEV/tree-sitter-doctext",
+        url = "https://github.com/OXY2DEV/tree-sitter-comment",
         files = { "src/parser.c" },
         branch = "main",
     },
@@ -47,7 +47,7 @@ parser_configs.doctext = {
 Now, quit & open Neovim and run this command,
 
 ```vim
-:TSInstall doctext
+:TSInstall comment
 ```
 
 ### 💡 manual
@@ -58,9 +58,9 @@ Now, quit & open Neovim and run this command,
 
 3. Run `tree-sitter build`(if it tells you to install dependencies then you should install them and retry).
 
-4. Copy the `doctext.so` file to `~/.config/nvim/parser/`.
+4. Copy the `comment.so` file to `~/.config/nvim/parser/`.
 
 ## 💥 Query files(syntax highlighting & injections)
 
-Copy everything inside `queries/` to `~/.config/nvim/queries/doctext/` in your machine.
+Copy everything inside `queries/` to `~/.config/nvim/queries/comment/` in your machine.
 

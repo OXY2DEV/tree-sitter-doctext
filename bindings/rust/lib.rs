@@ -7,7 +7,7 @@
 //! let code = r#"
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
-//! let language = tree_sitter_doctext::LANGUAGE;
+//! let language = tree_sitter_comment::LANGUAGE;
 //! parser
 //!     .set_language(&language.into())
 //!     .expect("Error loading DocText parser");
@@ -21,11 +21,11 @@
 use tree_sitter_language::LanguageFn;
 
 extern "C" {
-    fn tree_sitter_doctext() -> *const ();
+    fn tree_sitter_comment() -> *const ();
 }
 
 /// The tree-sitter [`LanguageFn`] for this grammar.
-pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_doctext) };
+pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_comment) };
 
 /// The content of the [`node-types.json`] file for this grammar.
 ///

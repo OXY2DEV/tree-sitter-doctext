@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-doctext",
-  "version": "1.3.0",
+  "name": "tree-sitter-comment",
+  "version": "2.0.0",
   "description": "Tree-sitter parser for writing documentation in plaintext(usually as comments in code)",
-  "repository": "https://github.com/oxy2dev/tree-sitter-doctext",
+  "repository": "https://github.com/oxy2dev/tree-sitter-comment",
   "license": "MIT",
   "author": {
     "name": "MD. Mouinul Hossain",
@@ -15,7 +15,7 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "doctext"
+    "comment"
   ],
   "files": [
     "grammar.js",
