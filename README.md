@@ -40,6 +40,9 @@ parser_configs.comment = {
         url = "https://github.com/OXY2DEV/tree-sitter-comment",
         files = { "src/parser.c" },
         branch = "main",
+
+        -- Also installs the query files(*syntax highlighting*), Only for the `main` branch of `nvim-treesitter`.
+        queries = "queries/"
     },
 }
 ```
