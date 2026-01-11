@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-comment",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Tree-sitter parser for writing documentation in plaintext(usually as comments in code)",
   "repository": "https://github.com/oxy2dev/tree-sitter-comment",
   "license": "MIT",

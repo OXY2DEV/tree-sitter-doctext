@@ -200,9 +200,9 @@ module.exports = grammar({
         token.immediate(/\d+/)
       ),
       seq(
-        /[a-zA-Z0-9_-]+/,
+        /[a-zA-Z0-9\._-]+/,
         token.immediate("/"),
-        token.immediate(/[a-zA-Z0-9_-]+/),
+        token.immediate(/[a-zA-Z0-9_\.-]+/),
         token.immediate("#"),
         token.immediate(/\d+/),
       )

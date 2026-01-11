@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-comment"
 description = "Tree-sitter parser for writing documentation in plaintext(usually as comments in code)"
-version = "2.0.0"
+version = "2.0.1"
 authors = ["MD. Mouinul Hossain <mdmouinulhossainshawon@gmail.com>"]
 license = "MIT"
 readme = "README.md"

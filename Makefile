@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-comment
 HOMEPAGE_URL := https://github.com/oxy2dev/tree-sitter-comment
-VERSION := 2.0.0
+VERSION := 2.0.1
 
 # repository
 SRC_DIR := src
