@@ -27,24 +27,23 @@
 
 ### 💡 nvim-treesitter
 
->[!IMPORTANT]
-> If you plan on using it inside comments, you also need to add it as an injection for that language.
-
 Put this in your `nvim-treesitter` config,
 
 ```lua
-local parser_configs = require("nvim-treesitter.parsers").get_parser_configs();
+vim.api.nvim_create_autocmd("User", {
+    pattern = "TSUpdate",
+    callback = function ()
+        require("nvim-treesitter.parsers").comment = {
+            install_info = {
+                url = "https://github.com/OXY2DEV/tree-sitter-comment",
+                branch = "main",
 
-parser_configs.comment = {
-    install_info = {
-        url = "https://github.com/OXY2DEV/tree-sitter-comment",
-        files = { "src/parser.c" },
-        branch = "main",
-
-        -- Also installs the query files(*syntax highlighting*), Only for the `main` branch of `nvim-treesitter`.
-        queries = "queries/"
-    },
-}
+                -- Also installs the query files(*syntax highlighting*), Only for the `main` branch of `nvim-treesitter`.
+                queries = "queries/"
+            },
+        }
+    end
+})
 ```
 
 Now, quit & open Neovim and run this command,

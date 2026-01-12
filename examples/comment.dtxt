@@ -27,3 +27,6 @@ FIXME: Fix some *issues*.
 NOTE(grammar, @OXY2DEV): Add features to grammar.
 
 Author: @OXY2DEV
+
+
+vim:ft=comment
